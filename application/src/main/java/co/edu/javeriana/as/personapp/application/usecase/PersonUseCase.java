@@ -23,6 +23,9 @@ public class PersonUseCase implements PersonInputPort {
 	public PersonUseCase(@Qualifier("personOutputAdapterMaria") PersonOutputPort personPersintence) {
 		this.personPersintence=personPersintence;
 	}
+
+
+	
 	
 	@Override
 	public void setPersintence(PersonOutputPort personPersintence) {
