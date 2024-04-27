@@ -24,7 +24,6 @@ public class PersonUseCase implements PersonInputPort {
 		this.personPersintence=personPersintence;
 	}
 
-
 	
 	
 	@Override
