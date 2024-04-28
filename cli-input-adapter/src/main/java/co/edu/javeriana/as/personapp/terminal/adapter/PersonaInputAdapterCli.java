@@ -3,6 +3,8 @@ package co.edu.javeriana.as.personapp.terminal.adapter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import co.edu.javeriana.as.personapp.common.exceptions.NoExistException;
+import co.edu.javeriana.as.personapp.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -56,4 +58,30 @@ public class PersonaInputAdapterCli {
 	        .forEach(System.out::println);
 	}
 
+	public boolean create(Person person) {
+		log.info("Creating a new person");
+		Person newPerson = personInputPort.create(person);
+
+		if (newPerson != null)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean edit(Integer identification, Person person) throws NoExistException {
+		log.info("Editing a person");
+
+		Person editedPerson = personInputPort.edit(identification, person);
+
+		if (editedPerson != null)
+			return true;
+		else
+			return false;
+	}
+
+	public boolean drop(Integer identification) throws NoExistException {
+		log.info("Dropping a person");
+
+        return personInputPort.drop(identification);
+	}
 }
