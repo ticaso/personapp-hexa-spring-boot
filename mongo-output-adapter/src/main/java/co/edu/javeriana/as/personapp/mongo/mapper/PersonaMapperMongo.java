@@ -38,8 +38,10 @@ public class PersonaMapperMongo {
 	}
 
 	private String validateGenero(@NonNull Gender gender) {
-		return gender == Gender.FEMALE ? "F" : gender == Gender.MALE ? "M" : " ";
+		return gender == Gender.FEMALE ? "F" : gender == Gender.MALE ? "M" : gender == Gender.OTHER ? "O" : " ";
+
 	}
+
 
 	private Integer validateEdad(Integer age) {
 		return age != null && age >= 0 ? age : null;

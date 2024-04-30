@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `persona_db`.`persona` (
  `cc` INT(15) NOT NULL,
  `nombre` VARCHAR(45) NOT NULL,
  `apellido` VARCHAR(45) NOT NULL,
- `genero` ENUM('M', 'F') NOT NULL,
+ `genero` ENUM('M', 'F', 'O') NOT NULL,
  `edad` INT(3) NULL DEFAULT NULL, 
  CONSTRAINT `persona_pk` PRIMARY KEY (`cc`)
 );
