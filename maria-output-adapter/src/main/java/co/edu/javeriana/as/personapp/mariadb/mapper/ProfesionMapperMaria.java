@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import co.edu.javeriana.as.personapp.common.annotations.Mapper;
-import co.edu.javeriana.as.personapp.domain.Profession;
+import co.edu.javeriana.as.personapp.domain.Profesion;
 import co.edu.javeriana.as.personapp.domain.Study;
 import co.edu.javeriana.as.personapp.mariadb.entity.EstudiosEntity;
 import co.edu.javeriana.as.personapp.mariadb.entity.ProfesionEntity;
@@ -18,11 +18,11 @@ public class ProfesionMapperMaria {
 	@Autowired
 	private EstudiosMapperMaria estudiosMapperMaria;
 
-	public ProfesionEntity fromDomainToAdapter(Profession profession) {
+	public ProfesionEntity fromDomainToAdapter(Profesion profession) {
 		ProfesionEntity profesionEntity = new ProfesionEntity();
-		profesionEntity.setId(profession.getIdentification());
-		profesionEntity.setNom(profession.getName());
-		profesionEntity.setDes(validateDes(profession.getDescription()));
+		profesionEntity.setId(profession.getId());
+		profesionEntity.setNom(profession.getNom());
+		profesionEntity.setDes(validateDes(profession.getDes()));
 		profesionEntity.setEstudios(validateEstudios(profession.getStudies()));
 		return profesionEntity;
 	}
@@ -37,11 +37,11 @@ public class ProfesionMapperMaria {
 				: new ArrayList<EstudiosEntity>();
 	}
 
-	public Profession fromAdapterToDomain(ProfesionEntity profesionEntity) {
-		Profession profession = new Profession();
-		profession.setIdentification(profesionEntity.getId());
-		profession.setName(profesionEntity.getNom());
-		profession.setDescription(validateDescription(profesionEntity.getDes()));
+	public Profesion fromAdapterToDomain(ProfesionEntity profesionEntity) {
+		Profesion profession = new Profesion();
+		profession.setId(profesionEntity.getId());
+		profession.setNom(profesionEntity.getNom());
+		profession.setDes(validateDescription(profesionEntity.getDes()));
 		profession.setStudies(validateStudies(profesionEntity.getEstudios()));
 		return profession;
 	}
