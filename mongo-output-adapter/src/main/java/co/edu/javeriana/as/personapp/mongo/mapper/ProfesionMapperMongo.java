@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import co.edu.javeriana.as.personapp.common.annotations.Mapper;
-import co.edu.javeriana.as.personapp.domain.Profession;
+import co.edu.javeriana.as.personapp.domain.Profesion;
 import co.edu.javeriana.as.personapp.domain.Study;
 import co.edu.javeriana.as.personapp.mongo.document.EstudiosDocument;
 import co.edu.javeriana.as.personapp.mongo.document.ProfesionDocument;
@@ -18,11 +18,11 @@ public class ProfesionMapperMongo {
 	@Autowired
 	private EstudiosMapperMongo estudiosMapperMongo;
 
-	public ProfesionDocument fromDomainToAdapter(Profession profession) {
+	public ProfesionDocument fromDomainToAdapter(Profesion profession) {
 		ProfesionDocument profesionDocument = new ProfesionDocument();
-		profesionDocument.setId(profession.getIdentification());
-		profesionDocument.setNom(profession.getName());
-		profesionDocument.setDes(validateDes(profession.getDescription()));
+		profesionDocument.setId(profession.getId());
+		profesionDocument.setNom(profession.getNom());
+		profesionDocument.setDes(validateDes(profession.getDes()));
 		profesionDocument.setEstudios(validateEstudios(profession.getStudies()));
 		return profesionDocument;
 	}
@@ -37,11 +37,11 @@ public class ProfesionMapperMongo {
 				: new ArrayList<EstudiosDocument>();
 	}
 
-	public Profession fromAdapterToDomain(ProfesionDocument profesionDocument) {
-		Profession profession = new Profession();
-		profession.setIdentification(profesionDocument.getId());
-		profession.setName(profesionDocument.getNom());
-		profession.setDescription(validateDescription(profesionDocument.getDes()));
+	public Profesion fromAdapterToDomain(ProfesionDocument profesionDocument) {
+		Profesion profession = new Profesion();
+		profession.setId(profesionDocument.getId());
+		profession.setNom(profesionDocument.getNom());
+		profession.setDes(validateDescription(profesionDocument.getDes()));
 		profession.setStudies(validateStudies(profesionDocument.getEstudios()));
 		return profession;
 	}

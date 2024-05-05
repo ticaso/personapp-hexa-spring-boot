@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import co.edu.javeriana.as.personapp.common.annotations.Mapper;
 import co.edu.javeriana.as.personapp.domain.Person;
-import co.edu.javeriana.as.personapp.domain.Profession;
+import co.edu.javeriana.as.personapp.domain.Profesion;
 import co.edu.javeriana.as.personapp.domain.Study;
 import co.edu.javeriana.as.personapp.mongo.document.EstudiosDocument;
 import co.edu.javeriana.as.personapp.mongo.document.PersonaDocument;
@@ -24,7 +24,7 @@ public class EstudiosMapperMongo {
 
 	public EstudiosDocument fromDomainToAdapter(Study study) {
 		EstudiosDocument estudio = new EstudiosDocument();
-		estudio.setId(validateId(study.getPerson().getIdentification(), study.getProfession().getIdentification()));
+		estudio.setId(validateId(study.getPerson().getIdentification(), study.getProfession().getId()));
 		estudio.setPrimaryPersona(validatePrimaryPersona(study.getPerson()));
 		estudio.setPrimaryProfesion(validatePrimaryProfesion(study.getProfession()));
 		estudio.setFecha(validateFecha(study.getGraduationDate()));
@@ -40,7 +40,7 @@ public class EstudiosMapperMongo {
 		return person != null ? personaMapperMongo.fromDomainToAdapter(person) : new PersonaDocument();
 	}
 
-	private ProfesionDocument validatePrimaryProfesion(@NonNull Profession profession) {
+	private ProfesionDocument validatePrimaryProfesion(@NonNull Profesion profession) {
 		return profession != null ? profesionMapperMongo.fromDomainToAdapter(profession) : new ProfesionDocument();
 	}
 
