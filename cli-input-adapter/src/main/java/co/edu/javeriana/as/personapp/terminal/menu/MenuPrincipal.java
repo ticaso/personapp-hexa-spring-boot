@@ -32,13 +32,17 @@ public class MenuPrincipal {
 
 	//Menus
 	private final PersonaMenu personaMenu;
-
+	private final ProfesionMenu profesionMenu;
+	private final TelefonoMenu telefonoMenu;
 
 	private final Scanner keyboard;
 
     public MenuPrincipal() {
         this.personaMenu = new PersonaMenu();
+		this.profesionMenu = new ProfesionMenu();
+		this.telefonoMenu = new TelefonoMenu();
         this.keyboard = new Scanner(System.in);
+
     }
 
 	public void inicio() {
